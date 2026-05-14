@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+    video { width: 100%; height: 100%; object-fit: contain; display: block; }
+    #muteBtn {
+      position: fixed;
+      bottom: 16px; right: 16px;
+      width: 44px; height: 44px;
+      border-radius: 50%; border: none;
+      background: rgba(0,0,0,0.55);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s;
+    }
+    #muteBtn:hover { background: rgba(0,0,0,0.8); }
+    #muteBtn svg { width: 22px; height: 22px; fill: white; }
+  </style>
+</head>
+<body>
+  <video
+    id="vid"
+    src="https://raw.githubusercontent.com/doxxeon/-/main/jan.mp4"
+    //poster="YOUR_THUMBNAIL_URL"
+    autoplay loop muted playsinline
+  ></video>
+
+  <button id="muteBtn" onclick="toggleMute()">
+    <svg id="iconMuted" viewBox="0 0 24 24"><path d="M3.63 3.63a1 1 0 0 0-1.41 1.41L7.29 10.1 7 10.5H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3l4 3.5a1 1 0 0 0 1.63-.78v-4.28l4.18 4.18a7 7 0 0 1-2.18 1.13 1 1 0 1 0 .63 1.9 9 9 0 0 0 3.14-1.73l1.37 1.37a1 1 0 0 0 1.41-1.41ZM11 18.08l-2.8-2.45-.2-.13H5v-1h2l.25-.08L11 11v7.08Zm9-5.58a7 7 0 0 0-1.08-3.77l-1.46 1.46A5 5 0 0 1 18.5 13a5 5 0 0 1-.8 2.73l1.46 1.46A6.93 6.93 0 0 0 20 13Zm-3.5 0a3.49 3.49 0 0 0-.5-1.77l-1.5 1.5v.27a1.5 1.5 0 0 0 .5 1.12l1.06 1.06A3.46 3.46 0 0 0 16.5 13ZM11 5.92l-1.7 1.7L11 9.08V5.92Zm2-2.42a1 1 0 0 0-1.63.78v.73l2 2V4.28A1 1 0 0 0 13 3.5Z"/></svg>
+    <svg id="iconUnmuted" viewBox="0 0 24 24" style="display:none"><path d="M3 10.5v3a1 1 0 0 0 1 1h3l4 3.5a1 1 0 0 0 1.63-.78v-11a1 1 0 0 0-1.63-.78L7 9.5H4a1 1 0 0 0-1 1Zm11.5 2.5a3.5 3.5 0 0 0-2-3.18V16.2A3.5 3.5 0 0 0 14.5 13Zm0-10a8.5 8.5 0 0 1 0 17 1 1 0 1 1 0-2 6.5 6.5 0 0 0 0-13 1 1 0 1 1 0-2Zm0 4a5.5 5.5 0 0 1 0 11 1 1 0 1 1 0-2 3.5 3.5 0 0 0 0-7 1 1 0 1 1 0-2Z"/></svg>
+  </button>
+
+  <script>
+    function toggleMute() {
+      const v = document.getElementById('vid');
+      const m = document.getElementById('iconMuted');
+      const u = document.getElementById('iconUnmuted');
+      v.muted = !v.muted;
+      m.style.display = v.muted ? 'block' : 'none';
+      u.style.display = v.muted ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
