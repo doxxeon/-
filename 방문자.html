@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .wrap {
+      display: flex; align-items: center; gap: 10px;
+      color: #555;
+      font-size: 15px;
+    }
+    .count {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span>오늘 함께한 학우</span>
+    <span class="count" id="count">...</span>
+    <span>명</span>
+  </div>
+
+  <script>
+    const NAMESPACE = 'doxxeon-notion';
+    const KEY = '35202e228249808495fbdcff45bc8278';
+
+    fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('count').textContent = data.count.toLocaleString();
+      })
+      .catch(() => {
+        document.getElementById('count').textContent = '-';
+      });
+  </script>
+</body>
+</html>
