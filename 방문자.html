@@ -6,29 +6,46 @@
   <title>Counter</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: #1e2130;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
+    html, body { width: 100%; height: 100%; }
     .wrap {
-      display: flex; align-items: center; gap: 1.5vw;
-      color: #ffffff;
-      font-size: 3.5vw;
+      width: 100%;
+      height: 100%;
+      background: #0f1624;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .count {
-      font-size: 4.5vw;
+    .badge {
+      background: #ff4d8d;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .number {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 26px;
       font-weight: 700;
-      color: #ffffff;
+      color: #ff4d8d;
+      letter-spacing: -0.04em;
+    }
+    .unit {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <span>⚓</span>
-    <span>오늘 함께한 학우는?</span>
-    <span class="count" id="count">...</span>
+    <span class="badge">⚓ 오늘 함께 항해한 학우는?</span>
+    <div style="display:flex; align-items:baseline; gap:4px;">
+      <span class="number" id="count">...</span>
+      <span class="unit">명</span>
+    </div>
   </div>
 
   <script>
